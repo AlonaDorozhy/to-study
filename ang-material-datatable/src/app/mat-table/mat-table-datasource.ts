@@ -1,3 +1,4 @@
+
 import { DataSource } from '@angular/cdk/collections';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -17,8 +18,30 @@ export interface MatTableItem {
   year: any;
 
 }
+export class fetchData{
+  rows: any;
+  data: any;
+  constructor() {
+    this.fetch((d: MatTableItem[] | any) => {
+      this.rows = d;
+      this.data = d;
+    }); 
+    return this.rows
+  }
 
-export class MatTableDataSource extends DataSource<MatTableItem> {
+  fetch(data: any) {
+    const req = new XMLHttpRequest();
+    req.open('GET', `assets/data/books.json`);
+    req.onload = () => {
+      const books = JSON.parse(req.response);
+      data(books);
+    };
+    req.send();
+  }
+ 
+}
+export class MatTableDataSource extends DataSource<MatTableItem>  {
+
   ColumnMode = ColumnMode;
   SelectionType  = SelectionType ;
   data: MatTableItem[];
@@ -42,8 +65,9 @@ export class MatTableDataSource extends DataSource<MatTableItem> {
     this.fetch((d: MatTableItem[] | any) => {
       this.rows = d;
       this.data = d;
-      console.log(this.rows);
+      // console.log(this.rows);
     });
+    console.log(fetchData);
   }
 
 
