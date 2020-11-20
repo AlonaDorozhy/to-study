@@ -19,40 +19,40 @@ export interface MatTableItem {
 }
 
 export class MatTableDataSource extends DataSource<MatTableItem> {
-
+  ColumnMode = ColumnMode;
+  SelectionType  = SelectionType ;
   data: MatTableItem[];
   paginator: MatPaginator;
   sort: MatSort;
   rows = [];
-  columns = [
-   { name:'title'},
-   {  name:'author'},
-   {  name:'language'},
-   {  name:'country'},
-   {  name:'imageLink'},
-   {  name:'link'},
-   {  name:'pages'},
-   {  name:'year'},
-    ];
-  ColumnMode = ColumnMode;
-  SelectionType = SelectionType;
+  // columns = [
+  //  { name:'title'},
+  //  {  name:'author'},
+  //  {  name:'language'},
+  //  {  name:'country'},
+  //  {  name:'imageLink'},
+  //  {  name:'link'},
+  //  {  name:'pages'},
+  //  {  name:'year'},
+  //   ];
+
 
   constructor() {
     super();
     this.fetch((d: MatTableItem[] | any) => {
       this.rows = d;
       this.data = d;
+      console.log(this.rows);
     });
   }
 
 
-  fetch(bo: any) {
+  fetch(data: any) {
     const req = new XMLHttpRequest();
     req.open('GET', `assets/data/books.json`);
     req.onload = () => {
-      const arr = JSON.parse(req.response);
-
-      bo(arr);
+      const books = JSON.parse(req.response);
+      data(books);
     };
     req.send();
   }

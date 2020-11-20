@@ -1,0 +1,9 @@
+/* @import '~@angular/material/theming'; */
+@import '~@swimlane/ngx-datatable/index.css';
+@import '~@swimlane/ngx-datatable/themes/material.scss';
+@import '~@swimlane/ngx-datatable/assets/icons.css';
+
+.full-width-table {
+  width: 85%;
+  margin: auto;
+}

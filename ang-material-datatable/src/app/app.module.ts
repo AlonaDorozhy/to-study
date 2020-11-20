@@ -8,14 +8,17 @@ import {MatTableComponent} from '../app/mat-table/mat-table.component'
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-
+import { NgxTableComponent } from './ngx-table/ngx-table.component';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 @NgModule({
   declarations: [
     AppComponent,
-    MatTableComponent
+    MatTableComponent,
+    NgxTableComponent
 
   ],
   imports: [
+    NgxDatatableModule,
     BrowserModule,
     AppRoutingModule,
     NoopAnimationsModule,
