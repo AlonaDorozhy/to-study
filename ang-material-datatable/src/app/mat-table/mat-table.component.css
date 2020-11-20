@@ -1,0 +1,5 @@
+/* @import '~@angular/material/theming'; */
+.full-width-table {
+  width: 85%;
+  margin: auto;
+}
