@@ -1,62 +1,32 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTable } from '@angular/material/table';
-import { MatTableDataSource, MatTableItem, fetchData } from './mat-table-datasource';
-// import { fetchData } from './mat-table-datasource';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from './mat-table-datasource';
 import { ColumnMode, SelectionType } from '@swimlane/ngx-datatable';
 @Component({
   selector: 'app-mat-table',
   templateUrl: './mat-table.component.html',
-  styleUrls: ['./mat-table-component.scss']
+  styleUrls: ['./mat-table-component.sass']
 })
 export class MatTableComponent implements AfterViewInit, OnInit {
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatTable) table: MatTable<MatTableItem>;
-  // dataSource: MatTableDataSource;
-  dataSource=new MatTableDataSource();
+  dataSource!: MatTableDataSource;
   ColumnMode = ColumnMode;
-  SelectionType  = SelectionType ;
-rows = new fetchData()
-// rows:any;
+  SelectionType = SelectionType;
+  columns: any;
+  rows: any;
   displayedColumns = ['title',
     'author',
     'language',
     'country',
-    'imageLink',
     'link',
-    'pages',
-    'year',
+    'year'
   ];
-   columns = [
-   { name:'title'},
-   {  name:'author'},
-   {  name:'language'},
-   {  name:'country'},
-   {  name:'imageLink'},
-   {  name:'link'},
-   {  name:'pages'},
-   {  name:'year'},
-    ];
-  constructor() {
-  //  this.rows = this.dataSource;
-  
-  
-  }
+
 
   ngOnInit() {
-    // this.dataSource = new MatTableDataSource();
-   console.log(this.dataSource.data);
-   console.log(this.rows.rows);
-
+    this.dataSource = new MatTableDataSource();
   }
 
   ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
-    this.table.dataSource = this.dataSource;
-    console.log(this.table.dataSource);
-
-  }    
+    this.rows = this.dataSource.rows;
+    this.columns = this.dataSource.columns;
+  }
 }
