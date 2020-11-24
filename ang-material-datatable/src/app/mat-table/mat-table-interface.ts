@@ -1,4 +1,5 @@
-export interface MatTableItem {
+export interface TableItems {
+    id:number
     title: string;
     author: string;
     language: string;

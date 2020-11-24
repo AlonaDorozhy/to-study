@@ -1,19 +1,19 @@
 
 import { DataSource } from '@angular/cdk/collections';
-import { MatTableItem } from './mat-table-interface'
+import { TableItems } from './mat-table-interface'
 import { Observable } from 'rxjs';
-export class MatTableDataSource extends DataSource<MatTableItem>  {
-  connect(): Observable<MatTableItem[] | readonly MatTableItem[]> {
+export class MatTableDataSource extends DataSource<TableItems>  {
+  connect(): Observable<TableItems[] | readonly TableItems[]> {
     throw new Error('Method not implemented.');
   }
 
   disconnect() { }
-  data: MatTableItem[] | undefined;
+  data: TableItems[] | undefined;
   columns!: string[];
   rows = [];
   constructor() {
     super();
-    this.fetch((data: MatTableItem[] | any) => {
+    this.fetch((data: TableItems[] | any) => {
       this.rows = data;
       this.data = data;
       this.columns = Object.keys(data[0])
