@@ -7,4 +7,4 @@ export interface MatTableItem {
     link: string;
     pages: any;
     year: any;
-  }
+}

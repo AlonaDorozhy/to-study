@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from './mat-table-datasource';
-import { ColumnMode, SelectionType } from '@swimlane/ngx-datatable';
+import { ColumnMode } from '@swimlane/ngx-datatable';
 @Component({
   selector: 'app-mat-table',
   templateUrl: './mat-table.component.html',
@@ -9,7 +9,6 @@ import { ColumnMode, SelectionType } from '@swimlane/ngx-datatable';
 export class MatTableComponent implements AfterViewInit, OnInit {
   dataSource!: MatTableDataSource;
   ColumnMode = ColumnMode;
-  SelectionType = SelectionType;
   columns: any;
   rows: any;
   displayedColumns = ['title',
@@ -19,7 +18,6 @@ export class MatTableComponent implements AfterViewInit, OnInit {
     'link',
     'year'
   ];
-
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource();
